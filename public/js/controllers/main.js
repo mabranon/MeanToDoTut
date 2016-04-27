@@ -16,7 +16,7 @@ toDoController.controller('mainController',
 		
 	// submission of add form via express api
 	$scope.createToDo = function(){
-		if($scope.formData !== {}){
+		if(!angular.equals($scope.formData, {})){
 			ToDos.create($scope.formData).then(function(res){
 				$scope.formData = {};	// resets formData for new input
 				$scope.todos = res.data;
