@@ -30,7 +30,7 @@ tutToDo.controller("toDoController", function($scope, $http){
 	};
 		
 	$scope.deleteToDo = function(id){
-		$http.delete('/api/todo' + id).then(function(res){
+		$http.delete('/api/todos' + id).then(function(res){
 			$scope.todos = res.data;
 			console.log(res.data);
 		}, function(res){
