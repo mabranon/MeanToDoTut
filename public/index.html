@@ -14,10 +14,13 @@
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!---jquery--->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> <!---angularjs--->
-		<script src="core.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> <!---angularjs--->
+		
+		<script src="js/controllers/main.js"></script> <!---main controller--->
+		<script src="js/services/todos.js"></script> <!---todo service--->
+		<script src="js/core.js"></script> <!---main application--->
     </head>
-    <body ng-app="tutToDo" ng-controller="toDoController">
+    <body ng-app="tutToDo" ng-controller="mainController">
 		<div class="container">
 			
 			<!-- HEADER AND TODO COUNT -->
