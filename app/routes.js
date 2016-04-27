@@ -45,8 +45,32 @@ module.exports = function(app) {
 		});
 	});
 
+	// Check off a todo as completed
+	app.post('/api/checkTodo:todo_id', function(req, res){
+		ToDo.findById({_id : req.params.todo_id}, function(err, todo){
+			if(err){
+				res.send(err);
+			}else{
+				todo.done = !todo.done;
+				todo.save(function(err){
+					if(err){
+						res.send(err);
+					}else{
+						ToDo.find(function(err,todos){
+							if(err){
+								res.send(err);
+							}else{
+								res.json(todos);
+							}
+						});
+					}
+				});
+			}
+		});
+	});
+
 	// Delete a todo
-	app.delete('/api/todos:todo_id', function(req, res){
+	app.delete('/api/todo:todo_id', function(req, res){
 		ToDo.remove({
 			_id : req.params.todo_id
 		}, function(err, todo){

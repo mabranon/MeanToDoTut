@@ -27,6 +27,15 @@ toDoController.controller('mainController',
 		}
 	};
 		
+	$scope.finishToDo = function(id){
+		ToDos.checkOff(id).then(function(res){
+			$scope.todos = res.data;
+		}, function(res){
+			console.log('Error: ' + res.data);
+		});	
+	};
+	
+	
 	$scope.deleteToDo = function(id){
 		ToDos.delete(id).then(function(res){
 			$scope.todos = res.data;

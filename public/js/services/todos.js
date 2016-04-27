@@ -9,6 +9,9 @@ angular.module('toDoService', [])
 			},
 			delete : function(id){
 				return $http.delete('/api/todos' + id);
+			},
+			checkOff : function(id){
+				return $http.post('/api/checkTodo' + id);
 			}
 		}
 	});
