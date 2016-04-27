@@ -13,7 +13,7 @@ var methodOverride = require('method-override');	//Sim DELETE and PUT
 //===================
 // Configuration
 //===================
-mongoose.connect('mongodb://localhost:27017');
+mongoose.connect('mongodb://localhost:27017/test');
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));                 
@@ -39,12 +39,12 @@ var ToDo = mongoose.model('ToDo', {
 //---api----
 app.get('/api/todos/', function(req, res){
 	//mongoose finds all todos
-	ToDo.find(function(err, todos){
+	ToDo.find({}, function(err, todos){
 		// if there is an error, it is returned
 		if(err){
 			res.send(err);
 		}else{
-			res.json(todos); // else returns todos in json format
+			res.json(todos); // else returns todos in json format	
 		}
 	});
 });
@@ -72,7 +72,7 @@ app.post('/api/todos', function(req, res){
 app.delete('/api/todo:todo_id', function(req, res){
 	ToDo.remove({
 		_id : req.params.todo_id
-	}, function(req, todo){
+	}, function(err, todo){
 		if(err){
 			res.send(err);
 		}else{
@@ -89,7 +89,7 @@ app.delete('/api/todo:todo_id', function(req, res){
 
 //----Application----
 app.get('*', function(req, res){
-	res.sendfile('./public/index.html'); // loads main page of app
+	res.sendFile('./public/index.html'); // loads main page of app
 });
 		
 //=============
