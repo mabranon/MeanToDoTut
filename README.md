@@ -5,5 +5,5 @@ https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angula
 Deviations from tutorial
 - [x] localhost DB instead of remote DB connection
 - [] importance/urgent item fuctionality (star/highlight)
-- [] functionality to check off item w/o removal
+- [x] functionality to check off item w/o removal
 - [] log-in and seperate to-do lists for each user
