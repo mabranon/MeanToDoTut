@@ -70,10 +70,10 @@ module.exports = function(app) {
 	});
 
 	// Delete a todo
-	app.delete('/api/todo:todo_id', function(req, res){
+	app.delete('/api/todos', function(req, res){
 		ToDo.remove({
-			_id : req.params.todo_id
-		}, function(err, todo){
+			done : true
+		}, function(err){
 			if(err){
 				res.send(err);
 			}else{

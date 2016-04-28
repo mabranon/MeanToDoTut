@@ -7,8 +7,8 @@ angular.module('toDoService', [])
 			create : function(toDoData) {
 				return $http.post('/api/todos', toDoData);
 			},
-			delete : function(id){
-				return $http.delete('/api/todos' + id);
+			delete : function(){
+				return $http.delete('/api/todos');
 			},
 			checkOff : function(id){
 				return $http.post('/api/checkTodo' + id);

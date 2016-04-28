@@ -36,8 +36,8 @@ toDoController.controller('mainController',
 	};
 	
 	
-	$scope.deleteToDo = function(id){
-		ToDos.delete(id).then(function(res){
+	$scope.clearCompleted = function(){
+		ToDos.delete().then(function(res){
 			$scope.todos = res.data;
 			console.log(res.data);
 		}, function(res){
