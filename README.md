@@ -2,7 +2,7 @@
 Simple ToDo list with mean stack. Tutorial From Scotch.io:  
 https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular
 
-Deviations from tutorial
+Deviations from tutorial and personal additions
 - [x] localhost DB instead of remote DB connection
 - [] importance/urgent item fuctionality (star/highlight)
 - [x] functionality to check off item w/o removal
