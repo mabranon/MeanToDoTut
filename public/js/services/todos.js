@@ -12,6 +12,9 @@ angular.module('toDoService', [])
 			},
 			checkOff : function(id){
 				return $http.post('/api/checkTodo' + id);
+			},
+			markUrgent : function(id){
+				return $http.post('/api/markUrgentTodo' + id);
 			}
 		}
 	});

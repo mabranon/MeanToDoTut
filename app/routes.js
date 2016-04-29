@@ -29,7 +29,8 @@ module.exports = function(app) {
 		//create a todo with info from AJAX
 		ToDo.create({
 			text : req.body.text,
-			done : false
+			done : false,
+			urgent : false
 		}, function(err, todo) {
 			if (err){
 				res.send(err);
@@ -69,7 +70,31 @@ module.exports = function(app) {
 		});
 	});
 
-	// Delete a todo
+	// Mark todo as urgent
+	app.post('/api/markUrgentTodo:todo_id', function(req, res){
+		ToDo.findById({_id : req.params.todo_id}, function(err, todo){
+			if(err){
+				res.send(err);
+			}else{
+				todo.urgent = !todo.urgent;
+				todo.save(function(err){
+					if(err){
+						res.send(err);
+					}else{
+						ToDo.find(function(err,todos){
+							if(err){
+								res.sed(err);
+							}else{
+								res.json(todos);
+							}
+						});
+					}
+				});
+			}
+		});
+	});
+	
+	// Delete completed todos
 	app.delete('/api/todos', function(req, res){
 		ToDo.remove({
 			done : true
@@ -93,7 +118,7 @@ module.exports = function(app) {
 	//==============
 	// Loads main page of app
 	app.get('*', function(req, res){
-		res.sendFile('./public/index.html'); 
+		res.sendFile('/public/index.html'); 
 	});
 
 };

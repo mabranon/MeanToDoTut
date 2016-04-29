@@ -12,6 +12,9 @@
 			body                    { padding-top:50px; }
 			#todo-list              { margin-bottom:30px; }
 		</style>
+		<!--Custom stylesheet for urgent todo-->
+		<link rel="stylesheet" type="text/css" href="/css/customStyle.css">
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!---jquery--->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> <!---angularjs--->
@@ -33,9 +36,10 @@
 				<div class="col-sm-4 col-sm-offset-4">
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
 					<div class="checkbox" ng-repeat="todo in todos">
-						<label>
-							<input type="checkbox" ng-checked="todo.done" ng-click="finishToDo(todo._id)"> {{ todo.text }}
-						</label>
+						<div ng-class="{urgentTodo : todo.urgent}">
+							<input id="todoInst{{$id}}" type="checkbox" ng-checked="todo.done" ng-click="finishToDo(todo._id)"> 
+							<label for="todoInst{{id}}" ng-click="markTodoAsUrgent(todo._id)">{{ todo.text }}</label>
+						</div>
 					</div>
 				</div>
 			</div>

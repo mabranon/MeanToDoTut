@@ -26,7 +26,8 @@ toDoController.controller('mainController',
 			});
 		}
 	};
-		
+	
+	// mark todo as finished
 	$scope.finishToDo = function(id){
 		ToDos.checkOff(id).then(function(res){
 			$scope.todos = res.data;
@@ -35,7 +36,16 @@ toDoController.controller('mainController',
 		});	
 	};
 	
+	// mark todo as urgent
+	$scope.markTodoAsUrgent = function(id){
+		ToDos.markUrgent(id).then(function(res){
+			$scope.todos = res.data;
+		}, function(res){
+			console.log('Error :' + res.data);
+		});
+	};
 	
+	// delete all completed todos
 	$scope.clearCompleted = function(){
 		ToDos.delete().then(function(res){
 			$scope.todos = res.data;
